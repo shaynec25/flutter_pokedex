@@ -1,0 +1,89 @@
+{
+    "name": "bulbasaur",
+    "order": 1,
+    "past_types": [],
+    "species": {
+      "name": "bulbasaur",
+      "url": "https://pokeapi.co/api/v2/pokemon-species/1/"
+    },
+    "height": 7,
+    "weight": 69,
+    "held_items": [],
+    "id": 1,
+    "location_area_encounters": "https://pokeapi.co/api/v2/pokemon/1/encounters",
+    "sprites": {
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"
+    },
+    "abilities": [
+      {
+        "ability": {
+          "name": "overgrow",
+          "url": "https://pokeapi.co/api/v2/ability/65/"
+        }
+      },
+      {
+        "ability": {
+          "name": "chlorophyll",
+          "url": "https://pokeapi.co/api/v2/ability/34/"
+        }
+      }
+    ],
+    "moves": [
+      {
+        "move": {
+          "name": "razor-wind",
+          "url": "https://pokeapi.co/api/v2/move/13/"
+        }
+      }
+    ],
+    "stats": [
+      {
+        "base_stat": 45,
+        "stat": {
+          "name": "hp"
+        }
+      },
+      {
+        "base_stat": 49,
+        "stat": {
+          "name": "attack"
+        }
+      },
+      {
+        "base_stat": 49,
+        "stat": {
+          "name": "defense"
+        }
+      },
+      {
+        "base_stat": 65,
+        "stat": {
+          "name": "special-attack"
+        }
+      },
+      {
+        "base_stat": 65,
+        "stat": {
+          "name": "special-defense"
+        }
+      },
+      {
+        "base_stat": 45,
+        "stat": {
+          "name": "speed"
+        }
+      }
+    ],
+    "types": [
+      {
+        "type": {
+          "name": "grass"
+        }
+      },
+      {
+        "type": {
+          "name": "poison"
+        }
+      }
+    ]
+  }
