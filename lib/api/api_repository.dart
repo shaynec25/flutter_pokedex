@@ -31,7 +31,6 @@ class PokeApiRepository {
     final res = await httpInstance.getAllPokemon(20, offset);
     if (res.statusCode == 200) {
       final realJson = json.decode(res.body);
-      print(realJson);
       return PokemonList.fromJson(realJson);
     }
     throw Exception('error');

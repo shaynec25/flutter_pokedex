@@ -35,61 +35,47 @@ class _PokeInfoPageState extends State<PokeInfoPage> {
   }
 
   Widget infoOrLoading(PokeInfo poke) {
-    final img = Image.network(poke.sprites.frontShiny, fit: BoxFit.fill,
-        loadingBuilder: (context, child, loadingProgress) {
-      if (loadingProgress == null) {
-        print('no loading');
-        return child;
-      }
-      print('here');
-      return Center(
-          child: CircularProgressIndicator(
-        value: loadingProgress.expectedTotalBytes != null
-            ? loadingProgress.cumulativeBytesLoaded /
-                loadingProgress.expectedTotalBytes!
-            : null,
-      ));
-    });
-
     return isLoading
         ? CircularProgressIndicator()
-        : Column(
-            children: [
-              SizedBox(
-                  width: MediaQuery.of(context).size.height / 3.5, child: img),
-              ListTile(
-                title: Text(poke.order.toString()),
-                leading: Text('order'),
+        : Column(children: [
+            SizedBox(
+                height: MediaQuery.of(context).size.height / 3.5,
+                child: Image.network(
+                  poke.sprites.frontShiny,
+                  fit: BoxFit.fill,
+                )),
+            ListTile(
+              title: Text(poke.order.toString()),
+              leading: Text('order'),
+            ),
+            ListTile(
+              title: Text(poke.name),
+              leading: Text('name'),
+            ),
+            ListTile(
+              title: Text(poke.height.toString()),
+              leading: Text('height'),
+            ),
+            ListTile(
+              title: Text(poke.weight.toString()),
+              leading: Text('weight'),
+            ),
+            ListTile(
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: poke.types.map((e) => Text(e.type.name)).toList(),
               ),
-              ListTile(
-                title: Text(poke.name),
-                leading: Text('name'),
+              leading: Text('type'),
+            ),
+            ListTile(
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:
+                    poke.abilities.map((e) => Text(e.ability.name)).toList(),
               ),
-              ListTile(
-                title: Text(poke.height.toString()),
-                leading: Text('height'),
-              ),
-              ListTile(
-                title: Text(poke.weight.toString()),
-                leading: Text('weight'),
-              ),
-              ListTile(
-                title: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: poke.types.map((e) => Text(e.type.name)).toList(),
-                ),
-                leading: Text('type'),
-              ),
-              ListTile(
-                title: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:
-                      poke.abilities.map((e) => Text(e.ability.name)).toList(),
-                ),
-                leading: Text('abilities'),
-              ),
-            ],
-          );
+              leading: Text('abilities'),
+            ),
+          ]);
   }
 
   @override
@@ -99,6 +85,7 @@ class _PokeInfoPageState extends State<PokeInfoPage> {
         title: Text('Pokemon Infos'),
       ),
       body: Container(
+        color: Colors.black12,
         padding: EdgeInsets.symmetric(vertical: 50),
         child: Swiper(
           itemBuilder: (context, index) {
@@ -107,12 +94,9 @@ class _PokeInfoPageState extends State<PokeInfoPage> {
             }
             final PokeInfo selectedPokemon = info!;
             return Container(
-                height: 200,
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Center(child: infoOrLoading(selectedPokemon)));
+                padding: EdgeInsets.only(bottom: 25),
+                child:
+                    Card(child: Center(child: infoOrLoading(selectedPokemon))));
           },
           indicatorLayout: PageIndicatorLayout.COLOR,
           autoplay: false,
